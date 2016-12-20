@@ -12,6 +12,7 @@ pgbouncer-pkgs:
   pkg.installed:
     - pkgs:
       - libevent-dev
+      - libssl-dev
       - gcc
       - build-essential
 
