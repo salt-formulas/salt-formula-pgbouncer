@@ -12,6 +12,7 @@ pgbouncer-pkgs:
   pkg.installed:
     - pkgs:
       - libevent-dev
+      - gcc
 
 pgbouncer-install:
   cmd.run:
@@ -20,7 +21,7 @@ pgbouncer-install:
         wget -c {{ server.source.address }}
         tar xzf pgbouncer-{{ server.version }}.tar.gz
         cd pgbouncer-{{ server.version }}
-        ./configure --prefix=/usr/local --with-libevent=/usr/lib/x86_64-linux-gnu/libevent-2.0.so.5.1.9
+        ./configure --prefix=/usr/local --with-libevent=/usr/lib
         make
         make install
     - cwd: /tmp
@@ -28,6 +29,7 @@ pgbouncer-install:
     - timeout: 300
     - unless: test -d /tmp/pgbouncer-{{ server.version }}
     - require:
+      - pkg: pgbouncer-pkgs
       - pkg: pgbouncer-pkgs-purged
 {%- else %}
 pgbouncer-pkgs:
