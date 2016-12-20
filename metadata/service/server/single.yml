@@ -1,0 +1,10 @@
+applications:
+- pgbouncer
+classes:
+- service.pgbouncer.support
+parameters:
+  pgbouncer:
+    server:
+      enabled: true
+      bind:
+        address: 0.0.0.0

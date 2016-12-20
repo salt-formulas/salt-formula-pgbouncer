@@ -1,0 +1,5 @@
+{%- from "pgbouncer/map.jinja" import server with context %}
+
+{%- for user_name, user in server.user.iteritems() %}
+"{{ user.username }}" "{{ user.password }}"
+{%- endfor %}

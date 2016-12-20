@@ -1,0 +1,44 @@
+
+{%- set source_engine = salt['pillar.get']('pgbouncer:server:source:engine') %}
+{%- set version = salt['pillar.get']('pgbouncer:server:version', "1.7.2") %}
+
+{%- load_yaml as base_defaults %}
+{%- if source_engine == 'git' %}
+Debian:
+  pkgs:
+  - python-psycopg2
+  dir:
+    base: /srv/pgbouncer/venv
+    home: /var/lib/pgbouncer
+    workspace: /srv/pgbouncer/workspace
+RedHat:
+  pkgs:
+  - python-psycopg2
+  dir:
+    base: /srv/pgbouncer/venv
+    home: /var/lib/pgbouncer
+    workspace: /srv/pgbouncer/workspace
+{%- else %}
+Debian:
+  pkgs:
+  - libevent
+  - compat-libevent14
+  - pgbouncer
+  version: 1.7.2
+  engine: pkg
+  source:
+    address: https://pgbouncer.github.io/downloads/files/{{ version }}/pgbouncer-{{ version }}.tar.gz
+  dir:
+    base: /usr/lib/pgbouncer
+  host: {}
+  database: {}
+  user: {}
+  bind:
+    address: 127.0.0.1
+    port: 6432
+  pool_size: 5
+  client_connections: 30
+{%- endif %}
+{%- endload %}
+
+{%- set server = salt['grains.filter_by'](base_defaults, merge=salt['pillar.get']('pgbouncer:server')) %}

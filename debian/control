@@ -1,0 +1,15 @@
+Source: salt-formula-pgbouncer
+Maintainer: Michael Kuty <6du1ro.n@gmail.com>
+Section: admin
+Priority: optional
+Build-Depends: debhelper (>= 9), salt-master, python, python-yaml
+Standards-Version: 3.9.6
+Homepage: http://www.tcpcloud.eu
+Vcs-Browser: https://github.com/tcpcloud/salt-formula-pgbouncer
+Vcs-Git: https://github.com/tcpcloud/salt-formula-pgbouncer.git
+
+Package: salt-formula-pgbouncer
+Architecture: all
+Depends: ${misc:Depends}, salt-master, reclass
+Description: pgbouncer salt formula
+ Install and configure pgbouncer system.

@@ -1,0 +1,6 @@
+applications:
+- pgbouncer
+parameters:
+  pgbouncer:
+    server:
+      enabled: true
