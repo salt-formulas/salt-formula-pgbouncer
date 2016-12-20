@@ -26,7 +26,7 @@ pgbouncer-install:
     - cwd: /tmp
     - shell: /bin/bash
     - timeout: 300
-    - unless: test -x /usr/local/bin/pgbouncer
+    - unless: test -d /tmp/pgbouncer-{{ server.version }}
     - require:
       - pkg: pgbouncer-pkgs-purged
 {%- else %}
