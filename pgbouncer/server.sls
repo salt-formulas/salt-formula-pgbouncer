@@ -13,6 +13,7 @@ pgbouncer-pkgs:
     - pkgs:
       - libevent-dev
       - gcc
+      - build-essential
 
 pgbouncer-install:
   cmd.run:
