@@ -10,6 +10,6 @@ Vcs-Git: https://github.com/tcpcloud/salt-formula-pgbouncer.git
 
 Package: salt-formula-pgbouncer
 Architecture: all
-Depends: ${misc:Depends}, salt-master, reclass
+Depends: ${misc:Depends}
 Description: pgbouncer salt formula
  Install and configure pgbouncer system.
